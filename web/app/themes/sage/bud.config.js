@@ -33,10 +33,22 @@ export default async (app) => {
    * @see {@link https://bud.js.org/docs/bud.setProxyUrl}
    * @see {@link https://bud.js.org/docs/bud.watch}
    */
+
   app
     .setUrl('http://localhost:3000')
     .setProxyUrl('https://roots.test')
     .watch(['resources/views', 'app'])
+
+  /** 
+   * Because your Valet site is secured, your upstream configuration needs to be HTTPS. 
+   * Otherwise you’ll be redirected outside of the HMR server by Valet / Nginx.
+   * 
+   * The key things to remember are:
+    * Bud’s HMR is proxying your local dev server. You set the upstream URL with setProxyUrl()
+    * Bud’s HMR will rewrite any resources matching your setProxyUrl() to setUrl() (or setPublicProxyUrl() in non-standard configurations)
+    * If your dev server is sending a HTTP → HTTPS redirect, this rewriting won’t take effect, and you’ll end up outside of the HMR server.
+  */
+
   /**
    * Generate WordPress `theme.json`
    *
