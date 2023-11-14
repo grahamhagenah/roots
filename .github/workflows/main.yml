@@ -16,4 +16,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server
      
           script: |
-            echo 'Deployment successful to digital ocean' 
+            echo 'Deployment successful to remote server' 
