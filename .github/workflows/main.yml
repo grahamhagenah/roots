@@ -16,6 +16,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server
      
           script: |
+            - ssh $username@$host echo -e "Line 1\nLine 2\nLine 3" >> example.txt
+            cd /var/www/wordpress/roots
+            git pull origin main
             cd /var/www/wordpress/roots/web/app/themes/sage/
             yarn build
             echo 'Deployment successful to remote server' 
