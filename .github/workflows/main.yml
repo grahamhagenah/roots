@@ -19,16 +19,14 @@ jobs:
         with:
           node-version: 'latest' # Specify the Node.js version
 
-      - name: Install Yarn
-        run: npm install -g yarn # Install Yarn globally
+      - name: Install dependencies
+        run: yarn install
 
       - name: Build
         run: yarn build # Build the project
 
       - name: Deploy
         run: |
-          # Add your deployment script here
-          # For example, SSH into a server and pull the latest changes
           ssh $username@$host 'cd /var/www/wordpress/roots && git pull'
 
       # - name: Deploy project
