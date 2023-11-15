@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./site/web/app/themes/sage
+        working-directory: /var/www/wordpress/roots/web/app/themes/sage
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js
@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: 'latest'
           cache: yarn
-          cache-dependency-path: ./site/web/app/themes/sage/yarn.lock
+          cache-dependency-path: /var/www/wordpress/roots/web/app/themes/sage/yarn.lock 
       - run: yarn install
       - run: yarn build
