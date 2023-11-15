@@ -21,5 +21,7 @@ jobs:
             cd /var/www/wordpress/roots
             git pull origin main
             cd /var/www/wordpress/roots/web/app/themes/sage/
+            curl -sL https://deb.nodesource.com/setup_20.x | bash -
+            apt-get install -y nodejs
             yarn build
             echo 'Deployment successful to remote server' 
