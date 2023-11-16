@@ -64,6 +64,7 @@ jobs:
 
     - name: Install and build JS dependencies
       run: cd web/app/themes/sage && npm install && npm run build
+      
 
     - name: Create Release Dir On Remote
       run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy/${{ github.sha }}'
