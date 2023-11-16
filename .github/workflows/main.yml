@@ -1,20 +1,27 @@
+
 name: Build & Deploy
 on:
   push:
     branches: [main]
 
 jobs:
-  yarn-build:
-
+  deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: /var/www/wordpress/roots/web/app/themes/sage
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Deploy project
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          node-version: 'latest'
-      - run: yarn install
-      - run: yarn build
+          host: ${{ secrets.SSH_HOST }} # IP address of the remote server
+          key: ${{ secrets.SSH_KEY }} # Private or public key of the server
+          username: ${{ secrets.SSH_USERNAME }} # User of the server
+     
+          script: |
+            ssh $username@$host 
+            cd /var/www/wordpress/roots
+            git pull origin main
+            cd /var/www/wordpress/roots/web/app/themes/sage/
+            curl -sL https://deb.nodesource.com/setup_20.x | bash -
+            apt-get install -y nodejs
+            yarn build
+            echo 'Deployment successful to remote server' 
