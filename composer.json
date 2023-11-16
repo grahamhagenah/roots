@@ -48,6 +48,7 @@
     "roave/security-advisories": "dev-latest"
   },
   "config": {
+    "platform-check": false,
     "optimize-autoloader": true,
     "preferred-install": "dist",
     "allow-plugins": {
