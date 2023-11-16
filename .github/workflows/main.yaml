@@ -64,10 +64,10 @@ jobs:
 
     - name: Install and build JS dependencies
       run: cd web/app/themes/sage && npm install && npm run build
-      
+
 
     - name: Create Release Dir On Remote
-      run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy/${{ github.sha }}'
+      run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p -oStrictHostKeyChecking=no ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy/${{ github.sha }}'
 
     - name: Push files to the remote
       run: rsync -avz -e 'ssh -p ${{ env.SSH_PORT }}' --exclude-from=.rsyncignore ./ ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }}:${{ env.WEB_ROOT }}deploy/${{ github.sha }}
