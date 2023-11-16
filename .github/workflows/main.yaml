@@ -7,7 +7,7 @@
 #  - moves correct `.env.*` file for multiple configs
 #  - uses rsync to sync files, uses /.rsyncignore file to exclude whatever should not be there
 #  - symlinks uploads folder and symlink release folder to kinsta public hostname
-#  - if you want to clear cache, please uncomment the last job
+#  - if you want to clear cache, please uncomment the last line
 
 name: Build & Deploy
 
