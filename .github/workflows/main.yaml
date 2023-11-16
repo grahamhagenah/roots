@@ -56,7 +56,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-dev
+      run: composer update && composer install --prefer-dist --no-progress --no-dev
 
     # build sage based theme (remove if not used)
     - name: Install theme PHP dependencies
