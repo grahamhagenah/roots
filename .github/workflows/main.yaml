@@ -22,7 +22,7 @@ jobs:
       SSH_PORT: 22
       SSH_HOST:  ${{ secrets.SSH_HOST }}
       SSH_KEY: ${{ secrets.SSH_KEY }} 
-      KNOWN_HOSTS: # Known hosts information about your server
+      KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }} # Known hosts information about your server
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }} 
       WEB_ROOT: /var/www/roots
       ENV: development # Moves .env.<VALUE> to use as config
