@@ -36,7 +36,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 'latest'
+        php-version: '8.1'
 
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
@@ -79,6 +79,5 @@ jobs:
       run: |
         ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}private/shared/uploads && ln -sfn ${{ env.WEB_ROOT }}private/shared/uploads ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web/app/uploads'
 
-        
     - name: Promote production symlink
       run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'ln -sfn ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web ${{ env.WEB_ROOT }}public'
