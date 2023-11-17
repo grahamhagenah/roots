@@ -69,6 +69,9 @@ jobs:
     - name: Environment config
       run: mv .env.${{ env.ENV }} .env
 
+    - name: Remove old deploy files
+      run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'rm -r ${{ env.WEB_ROOT }}deploy'
+
     - name: Create Release Dir On Remote
       run: ssh -o StrictHostKeyChecking=no ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy/${{ github.sha }}'
 
