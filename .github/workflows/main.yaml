@@ -83,4 +83,4 @@ jobs:
       run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'ln -sfn ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web ${{ env.WEB_ROOT }}public'
 
     - name: Reset permissions
-      run: sudo chown -R www-data:www-data /var/www/roots/deploy && sudo chmod -R g+rw /var/www/roots/deploy
+      run: sudo chown -R www-data:www-data ${{ env.WEB_ROOT }}deploy && sudo chmod -R g+rw ${{ env.WEB_ROOT }}deploy
