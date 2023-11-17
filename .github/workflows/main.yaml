@@ -24,7 +24,7 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }} 
       KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }} # Known hosts information about your server
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }} 
-      WEB_ROOT: /var/www/rootspublic/
+      WEB_ROOT: /var/www/roots/
       ENV: development # Moves .env.<VALUE> to use as config
 
 
@@ -79,5 +79,6 @@ jobs:
       run: |
         ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}private/shared/uploads && ln -sfn ${{ env.WEB_ROOT }}private/shared/uploads ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web/app/uploads'
 
+        
     - name: Promote production symlink
       run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'ln -sfn ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web ${{ env.WEB_ROOT }}public'
