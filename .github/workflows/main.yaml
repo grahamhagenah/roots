@@ -68,7 +68,7 @@ jobs:
     - name: Environment config
       run: mv .env.${{ env.ENV }} .env
 
-    - name: Create Release Dir On Remote
+    - name: Create Release Directory On Remote
       run: ssh -o StrictHostKeyChecking=no ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy'
 
     - name: Push files to the remote
