@@ -959,7 +959,7 @@
                 "illuminate/contracts": "^9.0",
                 "illuminate/macroable": "^9.0",
                 "illuminate/support": "^9.0",
-                "php": "^8.0.2",
+                "php": "^8.1",
                 "symfony/console": "^6.0.9"
             },
             "suggest": {
