@@ -82,6 +82,8 @@ jobs:
     - name: Promote production symlink
       run: ssh ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'ln -sfn ${{ env.WEB_ROOT }}deploy/${{ github.sha }}/web ${{ env.WEB_ROOT }}public'
 
+    - name: Reset ownership
+      run: sudo chown -R www-data:www-data ${{ env.WEB_ROOT }}deploy
+
     - name: Reset permissions
-      run: sudo chown -R www-data:www-data ${{ env.WEB_ROOT }}deploy \
-           sudo chmod -R g+rw ${{ env.WEB_ROOT }}deploy
+      run: sudo chmod -R g+rw ${{ env.WEB_ROOT }}deploy
