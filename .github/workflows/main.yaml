@@ -73,7 +73,7 @@ jobs:
       run: ssh  ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }} -p ${{ env.SSH_PORT }} 'mkdir -p ${{ env.WEB_ROOT }}deploy'
 
     - name: Push files to the remote
-      run: rsync -avz -e 'ssh -p ${{ env.SSH_PORT }}' ./ ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }}:${{ env.WEB_ROOT }}deploy
+      run: rsync -avz -e 'ssh -p ${{ env.SSH_PORT }}' ./ ${{ env.SSH_USERNAME }}@${{ env.SSH_HOST }}:${{ env.WEB_ROOT }}deploy/
 
     - name: Ensure shared symlinks
       run: |
