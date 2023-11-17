@@ -24,7 +24,7 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }} 
       KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }} # Known hosts information about your server
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }} 
-      WEB_ROOT: /var/www/rootspublic
+      WEB_ROOT: /var/www/rootspublic/
       ENV: development # Moves .env.<VALUE> to use as config
 
 
