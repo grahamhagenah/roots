@@ -53,6 +53,8 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
+        fail-on-cache-miss: true
+
     - name: Install dependencies
       run: composer update && composer install --prefer-dist --no-progress --no-dev
 
