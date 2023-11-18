@@ -47,7 +47,7 @@ jobs:
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
@@ -56,7 +56,7 @@ jobs:
     - name: Install dependencies
       run: composer update && composer install --prefer-dist --no-progress --no-dev
 
-    # build sage based theme (remove if not used)
+    # Build Sage based theme
     - name: Install theme PHP dependencies
       run: cd web/app/themes/sage && composer install --prefer-dist --no-progress --no-dev
 
