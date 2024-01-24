@@ -63,3 +63,8 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+
+    // Gutenberg custom stylesheet
+add_theme_support('editor-styles');
+add_editor_style( 'resources/styles/editor-style.css' ); // make sure path reflects where the file is located
